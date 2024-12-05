@@ -1,181 +1,219 @@
 # EDtunnel
 
 <p align="left">
-  <br><img src="https://github.com/NiREvil/Emotional-Damage/assets/126243832/66c9bdfb-9e74-4a91-a7d3-9a180450c690" width="320px">
+  <img src="https://github.com/user-attachments/assets/f270e6a8-cccb-411f-a0b0-0617a3e25ff4" width="240px" 
+   style="margin-bottom: -50px;" alt="https://github.com/NiREvil/Emotional-Damage"<figcaption>
 </p>
 
-[🇮🇷Persian](README.fa.md)  
+__EDtunnel__ is a proxy tool based on Cloudflare Workers and Pages, supporting multiple protocols and configuration options.  
+Many thanks to [![Github](https://img.shields.io/badge/6KmFi6HP-004953.svg?logo=rockstargames)](https://github.com/6Kmfi6HP)
 
-
-[🇬🇧English](README.md)
-
-
-###### Many thanks to 3KmFi6HP
-[![Repository](https://img.shields.io/badge/View%20on-GitHub-blue.svg)](https://github.com/3Kmfi6HP/EDtunnel)
-
+[![Repository](https://img.shields.io/badge/VIEW_ON-GitHub-blue.svg?logo=github)](https://github.com/NiREvil/Emotional-Damage)
+[![Telegram](https://img.shields.io/badge/DISCUSS_ON-TELEGRAM-blue.svg?logo=telegram)](https://t.me/F_NiREvil)
+[![Readme](https://img.shields.io/badge/README_IN-فارسی-blue?logo=readme)](README.fa.md)
+[![Readme](https://img.shields.io/badge/README_IN-ENGLISH-blue?logo=readme)](README.md)
 ![rainbow](https://github.com/NiREvil/vless/assets/126243832/1aca7f5d-6495-44b7-aced-072bae52f256)
 
+## Features
 
-## Table of Contents
-- [deploy in pages.dev](#Deploy-in-pages.dev)
-- [deploy in worker.dev](#Deploy-in-worker.dev)
-- [uuid Setting](#UUID-Setting)
-  - [uuid Setting Example](#UUID-Setting-Example)
-- [subscribe vless link](#Subscribe-vless-link)
-- [cf domain or IP's](#CF_Domain_or_IP's)
-- [multiple port support](#Multiple-port-support)
-- [proxyIP](#ProxyIP)
-- [usage](#Usage)
-![rainbow](https://github.com/NiREvil/vless/assets/126243832/1aca7f5d-6495-44b7-aced-072bae52f256)
+- Support for Cloudflare Workers and Pages deployment
+- Multiple UUID configuration support
+- Custom proxy IP and port support
+- SOCKS5 proxy support
+- Automatic configuration subscription link
+- Simple and easy deployment process
 
-## Deploy in pages.dev
+## Quick Deployment
 
-1. See YouTube Video:
+### Deploy on Pages.dev
 
-   [youtube.com/watch](https://www.youtube.com/watch?v=8I-yTNHB0aw)
+1. Watch the deployment tutorial video:
+   [![Youtube](https://img.shields.io/badge/YouTube-FE0000?logo=youtube)](https://www.youtube.com/watch?v=8I-yTNHB0aw)
 
-2. Clone this repository deploy in cloudflare pages.
+3. Clone this repository and deploy in Cloudflare Pages
 
-## Deploy in worker.dev
+### Deploy on Worker.dev
 
-1. Copy `_worker.js` code from [here](_worker.js).
+1. Copy `_worker.js`
+ code from [![Here](https://img.shields.io/badge/Here-blue?logo=opencollective)](_worker.js)
 
-2. Alternatively, you can click the button below to deploy directly.
+3. Or click the button below to deploy directly:
 
    [![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/NiREvil/Emotional-Damage)
 
+## ⚙️ Configuration Guide
 
-## UUID Setting
+### Environment Variables
 
-1. When deploy in cloudflare pages, you can set uuid in `wrangler.toml` file. variable name is `uuid`. `wrangler.toml` file is also supported. (recommended) in case deploy in webpages, you can not set uuid in `wrangler.toml` file.
+| Variable | Required | Example | Description |
+|------------------|-------------------|---------------|-------------------|
+| `UUID` | No | Single: `12345678-1234-1234-1234-123456789012`<br>Multiple: `uuid1,uuid2,uuid3` | User identification<br>To generate your own UUID refer to [![UUID](https://img.shields.io/badge/ID_generator-gray?logo=lucid)](https://www.uuidgenerator.net) |
+| `PROXYIP` | No | `1.1.1.1` or `example.com`<br>Multiple: `1.1.1.1:9443,2.2.2.2:8443`<br>To find proxyIP [![ProxyIP](https://img.shields.io/badge/Check_here-gray?logo=envoyproxy)](https://github.com/NiREvil/vless/blob/main/sub/ProxyIP.md) | Custom proxy IP and port |
+| `SOCKS5` | No | `user:pass@host:port`<br>Multiple: `user1:pass1@host1:port1,user2:pass2@host2:port2` | SOCKS5 proxy configuration |
+| `SOCKS5_RELAY` | No | `true` or `false` | Enable SOCKS5 traffic relay |
 
-2. When deploy in worker.dev, you can set uuid in the __11th line__ of `_worker.js` file. variable name is `userID`. `wrangler.toml` file is also supported. (recommended) in case deploy in webpages, you can not set uuid in `wrangler.toml` file. in this case, you can also set uuid in `uuid` enviroment variable.
+### Non-443 Port Configuration
 
-Note: `UUID` is the uuid you want to set. pages.dev and worker.dev all of them method supported, but depend on your deploy method.
+1. Visit `https://proxyip.edtunnel.best/`
+2. Enter `ProxyIP:proxyport` and click Check
+3. When showing `Proxy IP: true`, it's available
+4. Configure in Worker: `PROXYIP=211.230.110.231:50008`
+5. To find proxyIP [![ProxyIP](https://img.shields.io/badge/Check_here-gray?logo=envoyproxy)](https://github.com/NiREvil/vless/blob/main/sub/ProxyIP.md)
 
+Note: Proxy IPs with ports may not work on HTTP-only Cloudflare sites.
 
-### UUID Setting Example
+### UUID Configuration
 
-1. single uuid environment variable
+#### Method 1
+Set in `wrangler.toml` file (not recommended for public repositories)
 
-   ```.environment
-   uuid = "uuid here your want to set"
+```toml
+[vars]
+UUID = "your-uuid-here"
+```
+
+#### Method 2
+Set in Cloudflare Dashboard environment variables (recommended method)
+
+## ⚠️ Important Note: Multiple Configuration Separator
+
+All multiple configurations MUST use English comma(,) as separator, NOT Chinese comma(，)
+
+✅ Correct Examples:
+```bash
+# Multiple UUID
+UUID=uuid1,uuid2,uuid3
+
+# Multiple SOCKS5 proxies
+SOCKS5=192.168.1.1:1080,192.168.1.2:1080
+
+# Multiple PROXYIP
+PROXYIP=1.1.1.1:443,2.2.2.2:443
+```
+
+❌ Wrong Examples:
+```bash
+# Wrong: Using Chinese comma
+UUID=uuid1，uuid2，uuid3
+
+# Wrong: Using Chinese comma
+SOCKS5=192.168.1.1:1080，192.168.1.2:1080
+```
+
+## 📱 Quick Start
+
+### Auto Configuration Subscribe
+
+Use the following link for auto configuration:
+```
+https://sub.xf.free.hr/auto
+```
+
+### View Configuration
+
+- Visit your domain: `https://your-domain.pages.dev`
+- Use specific UUID: `/sub/[uuid]`
+- View full configuration: visit domain root path
+- Get subscription content: visit `/sub/[uuid]`
+
+## 🔧 Advanced Configuration
+
+### Multiple UUID Support
+
+You can configure multiple UUIDs in these ways:
+
+1. Via environment variables:
+   ```
+   UUID=uuid1,uuid2,uuid3
    ```
 
-2. multiple uuid environment variable
-
-   ```.environment
-   uuid = "uuid1,uuid2,uuid3"
+2. Via configuration file:
+   ```toml
+   [vars]
+   UUID = "uuid1,uuid2,uuid3"
    ```
 
-   note: uuid1, uuid2, uuid3 are separated by commas`,`.
-   when you set multiple uuid, you can use `https://edtunnel.pages.dev/uuid1` to get the clash config and vless:// link.
+### SOCKS5 Proxy Configuration
 
+Supports the following formats:
+- Basic format: `host:port`
+- Authentication format: `username:password@host:port`
+- Multiple proxies (separated by English comma): `proxy1,proxy2,proxy3`
 
-## Subscribe vless link
+#### Configuration Examples:
 
-- visit `https://edtunnel.pages.dev/uuid your set` to get Aggregate general v2ray, Singbox and Clash Subscription links.
+1. Single Proxy:
+```bash
+# Basic format
+SOCKS5=192.168.1.1:1080
 
-  - Visit `https://edtunnel.pages.dev/uuid your set/pty` to get the aggregate universal subscription link.
-
-  - Visit `https://edtunnel.pages.dev/uuid your set/psb` to get Hiddify/Singbox subscription link
-
-  - Visit `https://edtunnel.pages.dev/uuid your set/pcl` to get the Clash-Meta subscription link.
-
-
-
-- done. if have any questions please join [@edtunnel](https://t.me/edtunnel)
-OR
- [@F_NiREvil](https://t.me/F_NiREvil)
-
-
-
-## CF Domain or IP's
-
-You can change the single CF-pages/workers custom domain for vless+ws+tls node in the 15th line of `_worker.js` file, default is `www.speedtest.net`
-and also you can replaced all CF clean IP or domains with your preferred from lines `17 ~ 31`.
-
-```POV-Ray SDL
-let CDNIP = 'www.speedtest.net'
+# With authentication
+SOCKS5=user:pass@192.168.1.1:1080
 ```
 
-```CSS
-// http_ip
-let IP1 = 'www.visa.com'
-let IP2 = 'cis.visa.com'
-let IP3 = 'africa.visa.com'
-let IP4 = 'www.visa.com.sg'
-let IP5 = 'sky.rethinkdns.com'
-let IP6 = 'go.inmobi.com'
-let IP7 = 'icook.hk'
+2. Multiple Proxies (separated by English comma):
+```bash
+# Multiple basic proxies
+SOCKS5=192.168.1.1:1080,192.168.1.2:1080,192.168.1.3:1080
 
-// https_ip
-let IP8 = 'usa.visa.com'
-let IP9 = 'www.speedtest.net'
-let IP10 = 'creativecommons.org'
-let IP11 = 'sky.rethinkdns.com'
-let IP12 = 'zula.ir'
-let IP13 = 'www.wto.org'
+# Multiple proxies with authentication
+SOCKS5=user1:pass1@host1:port1,user2:pass2@host2:port2
+
+# Mixed format
+SOCKS5=192.168.1.1:1080,user:pass@192.168.1.2:1080,192.168.1.3:1080
 ```
 
+#### SOCKS5 Proxy Load Balancing
 
-## Multiple port support
+When multiple proxies are configured, the system will automatically perform load balancing:
 
-For a list of Cloudflare supported ports, please refer to the [official documentation](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/ports).
+- Random selection
+- Automatic failover
+- Support mixed authentication methods
 
-By default, the port is 8080 and 8443. If you want to modifying ports, you can use the following ports:
+#### SOCKS5_RELAY Settings
 
-
-```CSS
-let portArray_http = [
-// line 33
-let PT1 = '80'
-let PT2 = '8080'
-let PT3 = '8880'
-let PT4 = '2052'
-let PT5 = '2082'
-let PT6 = '2086'
-let PT7 = '2095
-];
-
-let portArray_https = [
-// line 42 
-let PT8 = '443'
-let PT9 = '8443'
-let PT10 = '2053'
-let PT11 = '2083'
-let PT12 = '2087'
-let PT13 = '2096'
-];
+Enable SOCKS5 global relay:
+```bash
+SOCKS5_RELAY=true
 ```
 
-> [!NOTE]
-> if you deploy in cloudflare pages, https port is not supported. Simply add multiple ports node drictly use subscribe link,
-> subscribe content will return all Cloudflare supported ports.
+Notes:
+- Ensure proxy servers are stable and available
+- Recommend using private proxies for better security
+- Use commas to separate multiple proxies
+- Support dynamic proxy addition and removal
+
+## 🚨 Notes
+
+- Proxy IPs with ports may not work on HTTP-only Cloudflare sites
+- Use commas to separate multiple UUIDs
+- Recommend setting sensitive information via environment variables
+- Update regularly for latest features and security fixes
+
+## 🔧 Environment Variable Settings
+
+### Workers.dev Settings
+Configure environment variables in Workers settings page
+![in Workers](https://github.com/user-attachments/assets/77db9a1d-7f57-48f5-91d8-9c9b2c7f78c3)
 
 
-
-## ProxyIP
-
-1. When deploy in cloudflare pages, you can set proxyIP in `wrangler.toml` file or set in `_worker.js` file in the __line 13__.  Or i recommended to set in environment variable with name `proxyip` in your page/cloudflare account.
-
-2. When deploy in worker.dev, you can set proxyIP in `_worker.js` file. variable name is `proxyIP`.
-you can find proxyIP Here: https://github.com/NiREvil/vless/blob/main/sub/ProxyIP.md
+### Pages.dev Settings
+Configure environment variables in Pages settings page
+![in Pages](https://github.com/user-attachments/assets/9a425287-1efc-4a3f-8c3a-6ca8a9214a1e)
 
 
-> [!CAUTION]
->  `proxyIP` is the ip or domain you want to set. this means that the proxyIP is used to route traffic through a proxy rather than directly to a website that is using Cloudflare's (CDN). if you don't set this variable, connection to the Cloudflare IP will be cancelled (or blocked)...
->
-> resons: Outbound TCP sockets to Cloudflare IP ranges are temporarily blocked, please refer to the [tcp-sockets documentation](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#considerations)
+## 💬 Get Help
 
+- Telegram Group: [NiREvil Group](https://t.me/NiREvil_GP)
+- Repository: [Emotional-Damage](https://github.com/NiREvil/Emotional-Damage)
+- Issue Report: [Create New Issue](https://github.com/NiREvil/Emotional-Damage/issues)
 
-![rainbow](https://github.com/NiREvil/vless/assets/126243832/1aca7f5d-6495-44b7-aced-072bae52f256)
+## 📝 Contributing
 
+Welcome Pull Requests to improve the project! Please ensure:
 
-### Usage
-
-frist, open your pages.dev/uuid like: `https://edtunnel.pages.dev/uuid your set` in your browser, to get the vless/singbox and clash sublinks.
-
-Credits: [3Kmfi6HP](https://github.com/3Kmfi6HP/EDtunnel)  &  [zizifn](https://github.com/zizifn/edgetunnel)
-
-![rainbow](https://github.com/NiREvil/vless/assets/126243832/1aca7f5d-6495-44b7-aced-072bae52f256)
+1. Code follows project standards
+2. Add necessary tests
+3. Update relevant documentation
+4. Clearly describe the reasons for changes
