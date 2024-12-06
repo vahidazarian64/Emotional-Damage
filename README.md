@@ -5,7 +5,7 @@
    style="margin-bottom: -50px;" alt="https://github.com/NiREvil/Emotional-Damage"<figcaption>
 </p>
 
-__EDtunnel__ is a proxy tool based on Cloudflare Workers and Pages, supporting multiple protocols and configuration options.  
+**EDtunnel** is a proxy tool based on Cloudflare Workers and Pages, supporting multiple protocols and configuration options.  
 Many thanks to [![Github](https://img.shields.io/badge/6KmFi6HP-004953.svg?logo=rockstargames)](https://github.com/6Kmfi6HP)
 
 [![Repository](https://img.shields.io/badge/VIEW_ON-GitHub-blue.svg?logo=github)](https://github.com/NiREvil/Emotional-Damage)
@@ -22,6 +22,7 @@ Many thanks to [![Github](https://img.shields.io/badge/6KmFi6HP-004953.svg?logo=
 - SOCKS5 proxy support
 - Automatic configuration subscription link
 - Simple and easy deployment process
+
 
 ## Quick Deployment
 
@@ -75,7 +76,8 @@ UUID = "your-uuid-here"
 #### Method 2
 Set in Cloudflare Dashboard environment variables (recommended method)
 
-## ⚠️ Important Note: Multiple Configuration Separator
+> [!IMPORTANT]
+> Multiple Configuration Separator
 
 All multiple configurations MUST use English comma(,) as separator, NOT Chinese comma(，)
 
@@ -143,6 +145,7 @@ Supports the following formats:
 #### Configuration Examples:
 
 1. Single Proxy:
+
 ```bash
 # Basic format
 SOCKS5=192.168.1.1:1080
@@ -174,29 +177,29 @@ When multiple proxies are configured, the system will automatically perform load
 #### SOCKS5_RELAY Settings
 
 Enable SOCKS5 global relay:
+
 ```bash
 SOCKS5_RELAY=true
 ```
 
-Notes:
-- Ensure proxy servers are stable and available
-- Recommend using private proxies for better security
-- Use commas to separate multiple proxies
-- Support dynamic proxy addition and removal
+> [!NOTE]
+> - Ensure proxy servers are stable and available
+> - Recommend using private proxies for better security
+> - Use commas to separate multiple proxies
+> - Support dynamic proxy addition and removal
 
-## 🚨 Notes
+> [!IMPORTANT]
+> - Proxy IPs with ports may not work on HTTP-only Cloudflare sites
+> - Use commas to separate multiple UUIDs
+> - Recommend setting sensitive information via environment variables
+> - Update regularly for latest features and security fixes
 
-- Proxy IPs with ports may not work on HTTP-only Cloudflare sites
-- Use commas to separate multiple UUIDs
-- Recommend setting sensitive information via environment variables
-- Update regularly for latest features and security fixes
 
 ## 🔧 Environment Variable Settings
 
 ### Workers.dev Settings
 Configure environment variables in Workers settings page
 ![in Workers](https://github.com/user-attachments/assets/77db9a1d-7f57-48f5-91d8-9c9b2c7f78c3)
-
 
 ### Pages.dev Settings
 Configure environment variables in Pages settings page
@@ -209,10 +212,10 @@ Configure environment variables in Pages settings page
 - Repository: [Emotional-Damage](https://github.com/NiREvil/Emotional-Damage)
 - Issue Report: [Create New Issue](https://github.com/NiREvil/Emotional-Damage/issues)
 
+
 ## 📝 Contributing
 
 Welcome Pull Requests to improve the project! Please ensure:
-
 1. Code follows project standards
 2. Add necessary tests
 3. Update relevant documentation
