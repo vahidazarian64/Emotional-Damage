@@ -10,7 +10,7 @@ Many thanks to [![Github](https://img.shields.io/badge/6KmFi6HP-004953.svg?logo=
 
 [![Repository](https://img.shields.io/badge/VIEW_ON-GitHub-blue.svg?logo=github)](https://github.com/NiREvil/Emotional-Damage)
 [![Telegram](https://img.shields.io/badge/DISCUSS_ON-TELEGRAM-blue.svg?logo=telegram)](https://t.me/F_NiREvil)
-[![Readme](https://img.shields.io/badge/README_IN-فارسی-blue?logo=readme)](README.fa.md)
+[![Readme](https://img.shields.io/badge/README_IN-فارسی-blue?logo=readme)](README_FA.md)
 [![Readme](https://img.shields.io/badge/README_IN-ENGLISH-blue?logo=readme)](README.md)
 ![rainbow](https://github.com/NiREvil/vless/assets/126243832/1aca7f5d-6495-44b7-aced-072bae52f256)
 
